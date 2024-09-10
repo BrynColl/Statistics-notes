@@ -22,7 +22,7 @@ M&=\sup_{x}\left( \frac{f(x)}{g(x)} \right) \\
 \end{align}
 $$
 ```
-The envelope will be $Mg(x)$, which is just $M$ in our case. We simulate the "accept/reject" process by partitioning the variate plot $(V,Mg(V)U)$ into two sub-plots, our ultimate goal being to simulate the target distribution using the candidate variates. The first sub-plot consists of all the samples that fall underneath the target density. Such samples satisfy $U<f(V)/Mg(V)$ and are denoted by blue dots in the subsequent graphs. The second sub-plot consists of all the samples that fall between the envelope and the density curve and fail to satisfy $U<f(V)/Mg(V)$. We partition our data in desmos by partitioning `(V,Mg(V)U)` into the "accepted" sub-plot `(V,Mg(V)U{U<f(V)/Mg(V)})` and the "rejected" sub-plot `(V,Mg(V)U{U>=f(V)/Mg(V)})`.
+The envelope will be $Mg(x)$, which is just $M$ in our case. We simulate the "accept/reject" process by partitioning the variate plot $(V,Mg(V)U)$ into two sub-plots, our ultimate goal being to simulate the target distribution using the candidate variates. The first sub-plot consists of all the samples that fall underneath the target density. Such samples satisfy $U<f(V)/Mg(V)$ and are marked by blue dots in the subsequent graphs. The second sub-plot consists of all the samples that fall between the envelope and the density curve and fail to satisfy $U<f(V)/Mg(V)$. We partition our data in desmos by partitioning `(V,Mg(V)U)` into the "accepted" sub-plot `(V,Mg(V)U{U<f(V)/Mg(V)})` and the "rejected" sub-plot `(V,Mg(V)U{U>=f(V)/Mg(V)})`.
 <p>&nbsp;</p> 
 
 ![rejection_sampling_beta_by_unif](https://github.com/user-attachments/assets/16245b77-74a0-4fb2-b709-f4cf7de93219)
@@ -101,7 +101,7 @@ legend('topright',
 
 ![image](https://github.com/user-attachments/assets/ca30f0d4-39e2-4edd-b4f7-d16920a19024) 
 <div align="center">
- <i><b>Figure 2</b>: Uniform target candidate in R, n = 10,000.</i>
+ <i><b>Figure 2</b>: Uniform candidate density in R, n = 10,000.</i>
 </div>
 <p>&nbsp;</p> 
 ⬜︎
@@ -119,7 +119,7 @@ will be $\text{beta}(2,6)$ distributed. Thus, while Desmos has no native PRNG fo
 
 ![rejection_sampling_beta_by_beta](https://github.com/user-attachments/assets/a84d77f3-dde2-400e-89e9-df9df61060e1)
 <div align="center">
- <i><b>Figure 3</b>: Beta(2,6) target candidate in R, n = 100.</i>
+ <i><b>Figure 3</b>: Beta(2,6) candidate density in R, n = 100.</i>
 </div>
 <p>&nbsp;</p> 
 
@@ -179,7 +179,7 @@ legend('topright',
 
 ![image](https://github.com/user-attachments/assets/37d6908f-5f45-4736-ba2d-96707e12ea1b)
 <div align="center">
- <i><b>Figure 4</b>: Beta(2,6) target candidate in R, n = 10,000.</i>
+ <i><b>Figure 4</b>: Beta(2,6) candidate density in R, n = 10,000.</i>
 </div>
 <p>&nbsp;</p> 
 
