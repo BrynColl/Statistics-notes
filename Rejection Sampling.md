@@ -101,7 +101,7 @@ legend('topright',
 <div align="center">
  <i><b>Figure 2</b>: Uniform target candidate in R, n = 10,000.</i>
 </div>
-
+$square$
 
 ![rejection_sampling_beta_by_beta](https://github.com/user-attachments/assets/a84d77f3-dde2-400e-89e9-df9df61060e1)
 Figure - Example 3
