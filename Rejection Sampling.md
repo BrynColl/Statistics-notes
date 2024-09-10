@@ -101,10 +101,84 @@ legend('topright',
 <div align="center">
  <i><b>Figure 2</b>: Uniform target candidate in R, n = 10,000.</i>
 </div>
-$\square$
+⬜︎
+
+
+#### Example 2
+Now suppose $X$ is distributed as before, but $V \sim \text{beta}(2,6)$. Recall that we can use inverse transform sampling when $V$ is beta distributed with integer parameters. In particular, if each $U_j$ is an iid standard uniform random variable, then 
+```math
+$$
+V=\frac{\log\left( \prod_{j=1}^{a} U_{j} \right)}{\log\left( \prod_{j=1}^{a+b} U_{j}\right)}=\frac{\log\left( \prod_{j=1}^{2} U_{j} \right)}{\log\left( \prod_{j=1}^{8} U_{j}\right)}
+$$
+```
+will be $\text{beta}(2,6)$ distributed. Thus, while Desmos has no native PRNG for beta distributed variates, we can build one by defining eight uniform random variates (as we defined `U` and `V` in the previous example) and then use the above inverse transform to build `V`.
 
 ![rejection_sampling_beta_by_beta](https://github.com/user-attachments/assets/a84d77f3-dde2-400e-89e9-df9df61060e1)
-Figure - Example 3
+<div align="center">
+ <i><b>Figure 3</b>: Beta(2,6) target candidate in R, n = 100.</i>
+</div>
+
+The procedure for visualizing rejection sampling in R is 
+```
+set.seed(42)
+u <- runif(10000,0,1)
+v <- rbeta(10000,2,6)
+
+target <- function(x,a,b){
+  ((x^(a-1))*((1-x)^(b-1)))/beta(a,b)
+}
+
+candidate <- function(x){
+  dbeta(x,2,6)
+}
+
+M <- (beta(2,6)/beta(2.7,6.3))*(0.7**0.7)*(0.3**0.3)
+
+envelope <- function(x){
+  M*candidate(x)
+}
+
+#for the condition
+M.u.g <- function(x){
+  u*envelope(x)
+}
+
+plot(x.n,candidate(x.n),
+     col="red",
+     lty = "dashed",
+     type='l',
+     ylim = c(min(envelope(x.n)),max(envelope(x.n))),
+     xlab = "v",
+     ylab = "Mg(v)u"
+)
+lines(x.n,envelope(x.n),
+      col="red", 
+      ylim = c(0,4))
+lines(x.n,target(x.n,a=2.6,b=6.3),
+      col = "blue")
+points(v[u<target(v,2.6,6.3)/envelope(v)],M.u.g(v)[u<target(v,2.6,6.3)/envelope(v)],
+       col = "blue",
+       pch = 16)
+points(v[u>=target(v,2.6,6.3)/envelope(v)],M.u.g(v)[u>=target(v,2.6,6.3)/envelope(v)],
+       col = "red",
+       pch = 4)
+legend('topright',
+       horiz=F,
+       legend = c("candidate","envelope","target","accepted","rejected"),
+       col = c("red", "red","blue","blue","red"),
+       lty = c("dashed","solid","solid",NA,NA),
+       pch = c(NA,NA,NA,16,4)
+)
+```
+
+![image](https://github.com/user-attachments/assets/37d6908f-5f45-4736-ba2d-96707e12ea1b)
+<div align="center">
+ <i><b>Figure 4</b>: Beta(2,6) target candidate in R, n = 10,000.</i>
+</div>
+
+
+⬜︎
+
 
 
 ## Simulation Links (Desmos)
@@ -113,7 +187,7 @@ Figure - Example 3
 3. [Generating a Beta(2.7,6.3) sample from a Beta(2,6) sample](https://www.desmos.com/calculator/gsfxnfqemm)
 
 ## References
-Casella, G., and Berger, R.L. (2024). _Statistical inference_ [2nd ed.]. CRC Press.  \
+Casella, G., and Berger, R.L. (2024). *Statistical inference* [2nd ed.]. CRC Press.
 
 [^1]: Generally, one should only use a PRNG with a known generation algorithm. For example, the R function `runif()` uses a Mersenne Twister to generate variates, which suffices for most non-cryptographic purposes. However, Desmos is not transparent about the method used to compute random variates.
 
