@@ -1,3 +1,5 @@
+# Notes on Rejection Sampling
+
 This text is based on Casella and Berger's (2024) section on Rejection sampling. I created the simulations using Desmos[^1].
 
 Rejection sampling involves simulating the distribution of a random variable $X$ (called the _target distribution_) using a subset of the variates drawn from some _candidate distribution_. This text will focus on the visual intuition of rejection sampling, rather than the formal proof.
@@ -6,7 +8,7 @@ Rejection sampling involves simulating the distribution of a random variable $X$
 ### Rejection Sampling
 Let $Y \sim f(y)$ and $V \sim g(V)$, where $f$ (the target density) and $g$ (the candidate density) have a common support. Define $$M=\sup_{x}(f(x)/g(x))< \infty$$. To generate a random variable $X \sim f$:
 1. Generate independent random variables $U \sim \mathcal{U}(0,1)$ and $V \sim g$.
-2. If $U<f(V)/Mg(V)$ then accept and set $X=V$; otherwise reject and return to step 1.
+2. If $U<f(V)/Mg(V)$, then accept and set $X=V$; otherwise reject and return to step 1.
 
 #### Example 1
 Suppose our target distribution is $X \sim \text{beta}(2.7,6.3)$. If the target distribution's parameters were integers, we could use inverse transform methods to generate variates (we will exploit this in a later example), the same is not true for non-integer parameters. Hence we use rejection sampling. First, let $U \sim \mathcal{U}(0,1)$. In Desmos, we create a list uniform variates using `U = uniformdist().random(n)`, where the size of the list, `n`, is a slider-defined integer parameter. We define the candidate variates, `V`, in like manner. Next, we compute $M$. 
@@ -105,7 +107,7 @@ legend('topright',
 Figure - Example 3
 
 
-## Simulation Links
+## Simulation Links (Desmos)
 1. [Generating a Beta(2.7,6.3) sample from a Uniform(0,1) sample](https://www.desmos.com/calculator/w1b5kn7ybg)
 2. [Generating a Symmetric Truncated Normal(2,1) sample from a Uniform(0,1) sample](https://www.desmos.com/calculator/ku3vjyysj0)
 3. [Generating a Beta(2.7,6.3) sample from a Beta(2,6) sample](https://www.desmos.com/calculator/gsfxnfqemm)
