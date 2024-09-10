@@ -22,8 +22,11 @@ $$
 ```
 The envelope will be $Mg(x)$, which is just $M$ in our case. We simulate the "accept/reject" process by partitioning the variate plot $(V,Mg(V)U)$ into two sub-plots, our ultimate goal being to simulate the target distribution using the candidate variates. The first sub-plot consists of all the samples that fall underneath the target density. Such samples satisfy $U<f(V)/Mg(V)$ and are denoted by blue dots in the subsequent graphs. The second sub-plot consists of all the samples that fall between the envelope and the density curve and fail to satisfy $U<f(V)/Mg(V)$. We partition our data in desmos by partitioning `(V,Mg(V)U)` into the "accepted" sub-plot `(V,Mg(V)U{U<f(V)/Mg(V)})` and the "rejected" sub-plot `(V,Mg(V)U{U>=f(V)/Mg(V)})`.
 
-![rejection_sampling_beta_by_unif](https://github.com/user-attachments/assets/660f7ea5-e38d-4722-bea1-47ccf3d63b16)
-_**Figure 1**:_Uniform target density
+![rejection_sampling_beta_by_unif](https://github.com/user-attachments/assets/16245b77-74a0-4fb2-b709-f4cf7de93219)
+<div align="center">
+ <i><b>Figure 1</b>: Uniform candidate density in Desmos, n = 200.</i>
+</div>
+
 
 We can also use the R code:
 ```
@@ -91,6 +94,12 @@ legend('topright',
        pch = c(NA,NA,NA,16,4)
        )
 ```
+
+![image](https://github.com/user-attachments/assets/ca30f0d4-39e2-4edd-b4f7-d16920a19024) 
+<div align="center">
+ <i><b>Figure 2</b>: Uniform target candidate in R, n = 10,000.</i>
+</div>
+
 
 ![rejection_sampling_beta_by_beta](https://github.com/user-attachments/assets/a84d77f3-dde2-400e-89e9-df9df61060e1)
 Figure - Example 3
