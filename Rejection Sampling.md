@@ -2,8 +2,8 @@ This text is based on Casella and Berger's (2024) section on Rejection sampling.
 
 Rejection sampling involves simulating the distribution of a random variable $X$ (called the _target distribution_) using a subset of the variates drawn from some _candidate distribution_. This text will focus on the visual intuition of rejection sampling, rather than the formal proof.
 
-**Accept/Reject Algorithm**
->[!note]
+
+>[!note]- **Accept/Reject Algorithm**
 >Let $Y \sim f(y)$ and $V \sim g(V)$, where $f$ (the target density) and $g$ (the candidate density) have a common support. Define $$M=\sup_{y}(f(y)/g(y))< \infty$$.
 >To generate a random variable $Y \sim f$:
 >1. Generate independent random variables $U \sim \mathcal{U}(0,1)$ and $V \sim g$.
