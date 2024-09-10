@@ -185,7 +185,7 @@ legend('topright',
 
 ⬜︎
 
-Generally, empirical probability that we accept a sample should be higher in Example 2 than in Example 1, since the candidate distribution is closer to target distribution in the former case.
+Generally, the empirical probability that we accept a sample should be higher in Example 2 than in Example 1, since the candidate distribution is closer to target distribution in the former case.
 
 #### Example 3
 Suppose
