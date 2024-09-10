@@ -1,6 +1,6 @@
-# Notes on Rejection Sampling
+# Visualizing Rejection Sampling
 
-This text is based on Casella and Berger's (2024) section on Rejection sampling. I created the simulations using Desmos[^1].
+This text is based on Casella and Berger's (2001) section on Rejection sampling. I created the simulations using Desmos[^1] and R.
 
 Rejection sampling involves simulating the distribution of a random variable $X$ (called the _target distribution_) using a subset of the variates drawn from some _candidate distribution_. This text will focus on the visual intuition of rejection sampling, rather than the formal proof.
 
@@ -23,12 +23,13 @@ M&=\sup_{x}\left( \frac{f(x)}{g(x)} \right) \\
 $$
 ```
 The envelope will be $Mg(x)$, which is just $M$ in our case. We simulate the "accept/reject" process by partitioning the variate plot $(V,Mg(V)U)$ into two sub-plots, our ultimate goal being to simulate the target distribution using the candidate variates. The first sub-plot consists of all the samples that fall underneath the target density. Such samples satisfy $U<f(V)/Mg(V)$ and are denoted by blue dots in the subsequent graphs. The second sub-plot consists of all the samples that fall between the envelope and the density curve and fail to satisfy $U<f(V)/Mg(V)$. We partition our data in desmos by partitioning `(V,Mg(V)U)` into the "accepted" sub-plot `(V,Mg(V)U{U<f(V)/Mg(V)})` and the "rejected" sub-plot `(V,Mg(V)U{U>=f(V)/Mg(V)})`.
+<p>&nbsp;</p> 
 
 ![rejection_sampling_beta_by_unif](https://github.com/user-attachments/assets/16245b77-74a0-4fb2-b709-f4cf7de93219)
 <div align="center">
  <i><b>Figure 1</b>: Uniform candidate density in Desmos, n = 200.</i>
 </div>
-
+<p>&nbsp;</p> 
 
 We can also use the R code:
 ```
@@ -96,11 +97,13 @@ legend('topright',
        pch = c(NA,NA,NA,16,4)
        )
 ```
+<p>&nbsp;</p> 
 
 ![image](https://github.com/user-attachments/assets/ca30f0d4-39e2-4edd-b4f7-d16920a19024) 
 <div align="center">
  <i><b>Figure 2</b>: Uniform target candidate in R, n = 10,000.</i>
 </div>
+<p>&nbsp;</p> 
 ⬜︎
 
 
@@ -112,11 +115,13 @@ V=\frac{\log\left( \prod_{j=1}^{a} U_{j} \right)}{\log\left( \prod_{j=1}^{a+b} U
 $$
 ```
 will be $\text{beta}(2,6)$ distributed. Thus, while Desmos has no native PRNG for beta distributed variates, we can build one by defining eight uniform random variates (as we defined `U` and `V` in the previous example) and then use the above inverse transform to build `V`.
+<p>&nbsp;</p> 
 
 ![rejection_sampling_beta_by_beta](https://github.com/user-attachments/assets/a84d77f3-dde2-400e-89e9-df9df61060e1)
 <div align="center">
  <i><b>Figure 3</b>: Beta(2,6) target candidate in R, n = 100.</i>
 </div>
+<p>&nbsp;</p> 
 
 The procedure for visualizing rejection sampling in R is 
 ```
@@ -170,24 +175,28 @@ legend('topright',
        pch = c(NA,NA,NA,16,4)
 )
 ```
+<p>&nbsp;</p> 
 
 ![image](https://github.com/user-attachments/assets/37d6908f-5f45-4736-ba2d-96707e12ea1b)
 <div align="center">
  <i><b>Figure 4</b>: Beta(2,6) target candidate in R, n = 10,000.</i>
 </div>
-
+<p>&nbsp;</p> 
 
 ⬜︎
 
+Generally, empirical probability that we accept a sample should be higher in Example 2 than in Example 1, since the candidate distribution is closer to target distribution in the former case.
 
+#### Example 3
+Suppose
 
 ## Simulation Links (Desmos)
-1. [Generating a Beta(2.7,6.3) sample from a Uniform(0,1) sample](https://www.desmos.com/calculator/w1b5kn7ybg)
-2. [Generating a Symmetric Truncated Normal(2,1) sample from a Uniform(0,1) sample](https://www.desmos.com/calculator/ku3vjyysj0)
-3. [Generating a Beta(2.7,6.3) sample from a Beta(2,6) sample](https://www.desmos.com/calculator/gsfxnfqemm)
+1. [Generating a Beta(2.7,6.3) sample from a Uniform(0,1) sample](https://www.desmos.com/calculator/fvebfd9nzc)
+2. [Generating a Beta(2.7,6.3) sample from a Beta(2,6) sample](https://www.desmos.com/calculator/wioa3hc5ry)
+3. [Generating a Symmetric Truncated Normal(2,1) sample from a Uniform(0,1) sample](https://www.desmos.com/calculator/ku3vjyysj0)
 
 ## References
-Casella, G., and Berger, R.L. (2024). *Statistical inference* [2nd ed.]. CRC Press.
+Casella, G., and Berger, R.L. (2001). *Statistical inference* [2nd ed.]. Cengage.
 
 [^1]: Generally, one should only use a PRNG with a known generation algorithm. For example, the R function `runif()` uses a Mersenne Twister to generate variates, which suffices for most non-cryptographic purposes. However, Desmos is not transparent about the method used to compute random variates.
 
