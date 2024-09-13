@@ -178,4 +178,4 @@ https://en.m.wikipedia.org/wiki/Expectation–maximization_algorithm
 https://teng-gao.github.io/blog/2022/ems/
 https://www.statlect.com/fundamentals-of-statistics/EM-algorithm#:~:text=The%20Expectation%2DMaximization%20(EM),(also%20called%20latent%20variables)
 [https://www.math.kth.se/matstat/gru/Statistical%20inference/Lecture8.pdf](https://www.math.kth.se/matstat/gru/Statistical%20inference/Lecture8.pdf) [https://myweb.uiowa.edu/pbreheny/7110/wiki/kullback-leibler.html](https://myweb.uiowa.edu/pbreheny/7110/wiki/kullback-leibler.html) [https://myweb.uiowa.edu/pbreheny/7110/wiki/gibbs-inequality.html](https://myweb.uiowa.edu/pbreheny/7110/wiki/gibbs-inequality.html)
-
+https://www.youtube.com/watch?v=xy96ArOpntA
