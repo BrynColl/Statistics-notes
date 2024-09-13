@@ -1,2 +1,2 @@
 # Description
-A collection of desmos graphs for math, statistics, and economics.
+A collection of notes and graphs for math, statistics, and economics.
