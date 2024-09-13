@@ -1,6 +1,6 @@
 #### The Algorithm
 
->[!Theorem] EM Algorithm
+>EM Algorithm
 >We can find an MLE using the following method:
 >1. Choose an initial guess $\theta=\theta_{0}$.
 >2. Given the observed data $\mathbf{y}$, and under the assumption that your current guess $\theta=\theta_{t}$ is correct, compute how likely it is that the complete data is $\mathbf{X}=\mathbf{x}$. That is, compute $k_{t}(\mathbf{z})=f(\mathbf{z}|\mathbf{y},\theta_{t})$.
